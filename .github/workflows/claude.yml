@@ -54,7 +54,8 @@ jobs:
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
           # Images attached to issues are downloaded to /tmp/github-images/, outside the repo,
-          # so Claude needs cp to move them into images/
+          # so Claude needs cp to move them into images/. Research posts need the paper's
+          # abstract and license, and licensed figures are downloaded straight into images/
           claude_args: |
-            --allowedTools "Bash(cp /tmp/github-images/*:*),Bash(mkdir -p images/*:*),Bash(file *:*),Bash(bundle exec jekyll build:*),Bash(bundle exec htmlproofer:*)"
+            --allowedTools "WebFetch,WebSearch,Bash(curl -sL -o images/*:*),Bash(cp /tmp/github-images/*:*),Bash(mkdir -p images/*:*),Bash(file *:*),Bash(bundle exec jekyll build:*),Bash(bundle exec htmlproofer:*)"
 
